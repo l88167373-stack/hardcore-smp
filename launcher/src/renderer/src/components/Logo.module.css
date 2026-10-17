@@ -1,0 +1,92 @@
+.image {
+  object-fit: contain;
+  filter: drop-shadow(0 10px 40px rgba(255, 60, 0, 0.45));
+}
+
+.image.lg {
+  max-height: 170px;
+  max-width: 560px;
+}
+
+.image.md {
+  max-height: 110px;
+  max-width: 360px;
+}
+
+.image.sm {
+  max-height: 56px;
+  max-width: 200px;
+}
+
+/* Logo typographique de remplacement (en attendant assets/logo.png). */
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 0.86;
+  user-select: none;
+}
+
+.hardcore {
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  background: linear-gradient(180deg, #ffd000 0%, #ff7a00 48%, #ff0000 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 30px rgba(255, 60, 0, 0.55));
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: 0.12em;
+}
+
+.smp {
+  font-weight: 900;
+  letter-spacing: 0.26em;
+  color: var(--bone);
+}
+
+.season {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  border: 1px solid var(--line-ember);
+  border-radius: 6px;
+  padding: 0.35em 0.6em 0.3em;
+  line-height: 1;
+}
+
+.wordmark.lg .hardcore {
+  font-size: 92px;
+}
+.wordmark.lg .smp {
+  font-size: 34px;
+}
+.wordmark.lg .season {
+  font-size: 13px;
+}
+
+.wordmark.md .hardcore {
+  font-size: 44px;
+}
+.wordmark.md .smp {
+  font-size: 18px;
+}
+.wordmark.md .season {
+  font-size: 11px;
+}
+
+.wordmark.sm .hardcore {
+  font-size: 26px;
+}
+.wordmark.sm .smp {
+  font-size: 12px;
+}
+.wordmark.sm .season {
+  display: none;
+}

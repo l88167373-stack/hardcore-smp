@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Icône PROVISOIRE : remplacée automatiquement par assets/icon-1024.png quand il existe. -->
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="58%" r="55%">
+      <stop offset="0%" stop-color="#ff4a00" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#b31200" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff0000"/>
+      <stop offset="55%" stop-color="#ff7a00"/>
+      <stop offset="100%" stop-color="#ffd000"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ffd000"/>
+      <stop offset="100%" stop-color="#fff4c2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="#0a0a0a"/>
+  <rect width="1024" height="1024" rx="224" fill="url(#halo)"/>
+  <path fill="url(#fire)" d="M512 150 C 566 300 772 392 772 610 C 772 772 652 884 512 884 C 372 884 252 772 252 610 C 252 474 330 396 374 300 C 394 384 428 426 472 446 C 452 342 470 244 512 150 Z"/>
+  <path fill="url(#core)" d="M512 520 C 540 590 640 630 640 724 C 640 800 584 850 512 850 C 440 850 384 800 384 724 C 384 664 420 628 444 586 C 456 624 474 642 496 652 C 488 604 494 562 512 520 Z"/>
+</svg>

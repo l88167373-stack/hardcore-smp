@@ -1,0 +1,75 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--void);
+  overflow: hidden;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Halo radial rouge-orangé ; sa position change selon l'écran. */
+.halo {
+  position: absolute;
+  width: 1100px;
+  height: 1100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 70, 0, 0.3) 0%,
+    rgba(255, 40, 0, 0.16) 34%,
+    rgba(180, 20, 0, 0.06) 62%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%);
+  transition:
+    left 900ms var(--ease-out),
+    top 900ms var(--ease-out),
+    opacity 900ms var(--ease-out);
+  animation: ignite 1600ms var(--ease-out) both;
+}
+
+.hero {
+  left: 30%;
+  top: 30%;
+}
+
+.top {
+  left: 78%;
+  top: -10%;
+  opacity: 0.55;
+}
+
+.center {
+  left: 50%;
+  top: 46%;
+  opacity: 0.9;
+}
+
+@keyframes ignite {
+  from {
+    opacity: 0;
+    scale: 0.82;
+  }
+}
+
+/* Grain photographique (bruit SVG en ligne). */
+.grain {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}

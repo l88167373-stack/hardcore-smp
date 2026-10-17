@@ -1,0 +1,38 @@
+{
+  "mods": [
+    { "projectId": "P7dR8mSH", "name": "Fabric API", "required": true },
+    { "projectId": "AANobbMI", "name": "Sodium", "recommended": true },
+    { "projectId": "gvQqBUqZ", "name": "Lithium", "recommended": true },
+    { "projectId": "uXXizFIs", "name": "FerriteCore", "recommended": true },
+    { "projectId": "NNAgCjsB", "name": "Entity Culling", "recommended": true },
+    { "projectId": "5ZwdcRci", "name": "ImmediatelyFast", "recommended": true },
+    { "projectId": "mOgUt4GM", "name": "Mod Menu", "recommended": true },
+    { "projectId": "YL57xq9U", "name": "Iris Shaders" },
+    { "projectId": "51shyZVL", "name": "More Culling" },
+    { "projectId": "GNxdLCoP", "name": "Cull Leaves" },
+    { "projectId": "LQ3K71Q1", "name": "Dynamic FPS" },
+    { "projectId": "fQEb0iXm", "name": "Krypton" },
+    { "projectId": "PtjYWJkn", "name": "Sodium Extra" },
+    { "projectId": "Bh37bMuy", "name": "Reese's Sodium Options" },
+    { "projectId": "1IjD5062", "name": "Continuity" },
+    { "projectId": "aC3cM3Vq", "name": "Mouse Tweaks" },
+    { "projectId": "xv94TkTM", "name": "Controlling" },
+    { "projectId": "BVzZfTc1", "name": "Entity Texture Features" },
+    { "projectId": "4I1XuqiY", "name": "Entity Model Features" },
+    { "projectId": "9s6osm5g", "name": "Cloth Config API" },
+    { "projectId": "1eAoo2KR", "name": "YetAnotherConfigLib" },
+    { "projectId": "Ha28R6CL", "name": "Fabric Language Kotlin" }
+  ],
+  "resourcepacks": [
+    { "projectId": "w0TnApzs", "name": "Faithful 32x" },
+    { "projectId": "50dA9Sha", "name": "Fresh Animations" }
+  ],
+  "shaders": [
+    { "projectId": "HVnmMxH1", "name": "Complementary Shaders - Reimagined" },
+    { "projectId": "R6NEzAwj", "name": "Complementary Shaders - Unbound" },
+    { "projectId": "Q1vvjJYV", "name": "BSL Shaders" },
+    { "projectId": "izsIPI7a", "name": "MakeUp - Ultra Fast" },
+    { "projectId": "EpQFjzrQ", "name": "Solas Shader" },
+    { "projectId": "lLqFfGNs", "name": "Photon Shaders" }
+  ]
+}

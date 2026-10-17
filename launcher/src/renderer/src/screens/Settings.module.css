@@ -1,0 +1,207 @@
+.page {
+  max-width: 1000px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.help {
+  margin-top: 12px;
+  color: var(--soot);
+  font-size: var(--text-sm);
+  max-width: 70ch;
+}
+
+/* ---------- Mémoire ---------- */
+.memoryHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.memoryValue {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-right: 12px;
+}
+
+.memoryCaption {
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.sliderWrap {
+  position: relative;
+  margin-top: 22px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+      90deg,
+      #8a0000 0%,
+      var(--fire-red) calc(var(--fill) * 0.3),
+      var(--fire-orange) calc(var(--fill) * 0.75),
+      var(--fire-yellow) var(--fill),
+      #232323 var(--fill)
+    )
+    no-repeat;
+  cursor: pointer;
+  outline-offset: 6px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff4d6;
+  border: 3px solid var(--fire-orange);
+  box-shadow:
+    0 0 0 4px rgba(255, 122, 0, 0.2),
+    0 0 18px 2px rgba(255, 100, 0, 0.7);
+  transition: transform var(--t-fast);
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.recommendedMark {
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: 22px;
+  margin-left: -1px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.sliderScale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--soot);
+}
+
+/* ---------- Champs ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 0 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.field select,
+.field textarea {
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: #0f0f0f;
+  font-weight: 400;
+}
+
+.field select {
+  height: 38px;
+  padding: 0 10px;
+}
+
+.field select:disabled {
+  opacity: 0.5;
+}
+
+.field textarea {
+  padding: 10px 12px;
+  resize: vertical;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--line-ember);
+}
+
+/* ---------- Fichiers ---------- */
+.path code {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  color: var(--smoke);
+  font-size: 12.5px;
+  user-select: text;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.repair {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--smoke);
+}
+
+/* ---------- Avancé ---------- */
+.advanced {
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+}
+
+.advancedToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  color: var(--smoke);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.advancedToggle:hover {
+  color: var(--bone);
+}
+
+.advancedToggle svg {
+  transition: transform var(--t-med) var(--ease-out);
+  transform: rotate(-90deg);
+}
+
+.advancedToggle .chevronOpen {
+  transform: rotate(0deg);
+}
+
+.advancedBody {
+  max-width: 640px;
+}

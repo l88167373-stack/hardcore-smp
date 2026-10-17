@@ -1,0 +1,166 @@
+# ══════════════════════════════════════════════════════════════════════
+#  HSMP Gatekeeper — configuration
+# ══════════════════════════════════════════════════════════════════════
+#  Après une modification : tape /gatekeeper reload en jeu (ou dans la console).
+#  Les valeurs « TODO_… » sont à remplacer : tant qu'il en reste dans la partie
+#  Discord, le bot ne démarre pas (le serveur, lui, fonctionne normalement).
+#
+#  Comment copier un identifiant Discord : Paramètres utilisateur → Avancés →
+#  active « Mode développeur », puis clic droit sur le serveur / le salon / le rôle
+#  → « Copier l'identifiant ». Mets-le entre guillemets.
+# ══════════════════════════════════════════════════════════════════════
+
+discord:
+  # Token du bot (portail développeur Discord → ton application → Bot → Reset Token).
+  # ⚠ SECRET : ne le partage jamais, ne l'envoie à personne, ne le mets jamais sur GitHub.
+  token: "TODO_DISCORD_BOT_TOKEN"
+
+  # Identifiant du serveur Discord.
+  guild-id: "TODO_GUILD_ID"
+
+  channels:
+    # Salon où les joueurs écrivent leur pseudo Minecraft.
+    whitelist: "TODO_CHANNEL_WHITELIST"
+    # Salon privé du staff où le bot écrit les événements (whitelist, départs, refus de connexion).
+    logs: "TODO_CHANNEL_LOGS_ANTICHEAT"
+
+  roles:
+    # Rôle donné automatiquement aux joueurs whitelistés.
+    whitelisted: "TODO_ROLE_WHITELISTE"
+    # Rôle autorisé à utiliser les commandes /wl (les administrateurs du Discord le peuvent toujours).
+    admin: "TODO_ROLE_STAFF"
+
+  # Supprime le message du joueur et la réponse du bot dans #whitelist après ce nombre de secondes
+  # (pour garder le salon propre). 0 = ne rien supprimer.
+  delete-messages-after-seconds: 15
+
+  # Anti-double-compte : âge minimum du compte Discord, en jours, pour pouvoir se whitelister.
+  # 0 = pas de limite. Le staff peut toujours forcer avec /wl force.
+  min-account-age-days: 7
+
+  # Vérification complète (membres partis pendant que le serveur était éteint, whitelist à jour) :
+  # au démarrage, puis toutes les X heures.
+  reconcile-interval-hours: 6
+
+  # Si le bot Discord est déconnecté au moment où un joueur se connecte :
+  #   allow : on se fie à la base de données (conseillé : une panne Discord ne bloque pas tout le monde)
+  #   deny  : personne n'entre tant que le bot n'est pas reconnecté
+  offline-policy: allow
+
+whitelist:
+  # Ajoute / retire aussi les joueurs de la whitelist Minecraft (whitelist.json).
+  # Conseillé : laisse « white-list=true » dans server.properties.
+  sync-vanilla-whitelist: true
+
+links:
+  # Lien d'invitation affiché aux joueurs refusés (doit « ne jamais expirer »).
+  discord-invite: "TODO_DISCORD_INVITE"
+  # Page de téléchargement du launcher officiel (affichée aux joueurs refusés).
+  launcher-download: "TODO_LAUNCHER_DOWNLOAD"
+
+# ──────────────────────────────────────────────────────────────────────
+#  HSMP Guard : vérification du client pendant la connexion (avant d'entrer dans le monde)
+# ──────────────────────────────────────────────────────────────────────
+guard:
+  # false = vérification désactivée (à n'utiliser que pour des tests).
+  enabled: true
+  # Délai (secondes) laissé au client pour répondre au défi.
+  timeout-seconds: 5
+  # Clé(s) de signature du Guard (base64). Elle est fournie avec chaque version du Guard.
+  # Mets la nouvelle clé EN PREMIER et garde l'ancienne quelques jours pendant une mise à jour,
+  # puis retire-la. Tant qu'il ne reste que « TODO_GUARD_KEY », la vérification est désactivée.
+  keys:
+    - "TODO_GUARD_KEY"
+  # Si Modrinth est injoignable et qu'un fichier est inconnu :
+  #   true  = refuser la connexion (conseillé : aucun mod inconnu ne passe)
+  #   false = laisser entrer (et le signaler dans #logs-anticheat)
+  fail-closed: true
+
+# ──────────────────────────────────────────────────────────────────────
+#  Configuration publique (config/ du dépôt GitHub) : versions minimales, règlement, mods autorisés
+# ──────────────────────────────────────────────────────────────────────
+public-config:
+  # Adresse du dossier config/ en ligne, se terminant par « / ».
+  # Exemple : https://raw.githubusercontent.com/<ton-compte>/hardcore-smp/main/config/
+  # Tant qu'elle n'est pas renseignée (ou si GitHub est injoignable), la dernière copie connue est utilisée.
+  url: "TODO_PUBLIC_CONFIG_URL"
+  # Relecture automatique toutes les X minutes (une actu, un nouveau mod autorisé… sans redémarrer).
+  refresh-minutes: 10
+
+bypass:
+  # UUID des comptes (staff, tests) qui passent TOUTES les vérifications du Gatekeeper.
+  # Ajoute-les avec /gatekeeper bypass <joueur> ou à la main, au format :
+  #   - "069a79f4-44e9-4726-a5be-fca90e38aaf5"
+  uuids: []
+
+# ──────────────────────────────────────────────────────────────────────
+#  Messages affichés EN JEU (format MiniMessage : https://docs.advntr.dev/minimessage/format)
+#  Variables disponibles : <discord> (lien d'invitation), <name> (pseudo)
+# ──────────────────────────────────────────────────────────────────────
+messages:
+  not-whitelisted: |-
+    <red><bold>Tu n'es pas whitelisté.</bold></red>
+
+    <gray>Rejoins le Discord <gold><discord></gold>
+    <gray>et écris ton pseudo dans <white>#whitelist</white>.
+  left-discord: |-
+    <red><bold>Tu n'es plus sur le Discord.</bold></red>
+
+    <gray>Il faut rester sur le Discord pour jouer : <gold><discord></gold>
+    <gray>Puis réécris ton pseudo dans <white>#whitelist</white>.
+  discord-offline: |-
+    <gold><bold>Vérification Discord indisponible.</bold></gold>
+
+    <gray>Le bot Discord du serveur est momentanément déconnecté. Réessaie dans quelques minutes.
+  kicked-left-discord: |-
+    <red>Tu as quitté le Discord de HARDCORE SMP : tu n'es plus whitelisté.</red>
+  kicked-unlinked: |-
+    <red>Ton compte a été retiré de la whitelist par le staff.</red>
+  # Variables supplémentaires : <download> (page du launcher), <mod>, <pack>, <shader>
+  guard-missing: |-
+    <red><bold>Connexion refusée : utilise le launcher officiel HARDCORE SMP.</bold></red>
+
+    <gray>Télécharge-le ici : <gold><download></gold>
+  guard-invalid: |-
+    <red><bold>Connexion refusée : client modifié ou launcher abîmé.</bold></red>
+
+    <gray>Relance le launcher officiel et utilise <white>Paramètres → Vérifier et réparer les fichiers</white>.
+  guard-outdated: |-
+    <gold><bold>Mise à jour nécessaire.</bold></gold>
+
+    <gray>Ferme le jeu et relance le launcher officiel : il installera la nouvelle version.
+  rules-outdated: |-
+    <gold><bold>Le règlement a changé.</bold></gold>
+
+    <gray>Relance le launcher pour le lire et l'accepter, puis reconnecte-toi.
+  mod-not-allowed: |-
+    <red><bold>Mod non autorisé : <white><mod></white></bold></red>
+
+    <gray>Retire-le depuis l'onglet <white>Mods</white> du launcher, ou propose-le au staff sur le Discord.
+  pack-not-allowed: |-
+    <red><bold>Pack de ressources non autorisé : <white><pack></white></bold></red>
+
+    <gray>Retire-le depuis le launcher (onglet <white>Mods → Packs de ressources</white>).
+  shader-not-allowed: |-
+    <red><bold>Shader non autorisé : <white><shader></white></bold></red>
+
+    <gray>Retire-le depuis le launcher (onglet <white>Mods → Shaders</white>).
+  verification-unavailable: |-
+    <gold><bold>Vérification des mods momentanément impossible.</bold></gold>
+
+    <gray>Le service Modrinth ne répond pas. Réessaie dans quelques minutes.
+
+# ──────────────────────────────────────────────────────────────────────
+#  Réponses du bot sur DISCORD (texte Discord : **gras**, `code`…)
+#  Variables : {name} pseudo, {days} jours, {mention} mention du membre
+# ──────────────────────────────────────────────────────────────────────
+discord-messages:
+  linked: "✅ Bienvenue **{name}** ! Tu es whitelisté. Lance le launcher officiel HARDCORE SMP pour jouer."
+  already-linked-same: "✅ **{name}** est déjà whitelisté avec ton compte Discord."
+  invalid-name: "❌ Écris seulement ton pseudo Minecraft : 3 à 16 caractères (lettres, chiffres, _)."
+  account-too-young: "❌ Ton compte Discord est trop récent : il doit avoir au moins {days} jours. Demande au staff si besoin."
+  already-linked: "❌ Ton compte Discord est déjà lié à **{name}**. Pour changer de compte, demande au staff."
+  name-not-found: "❌ Le pseudo **{name}** n'existe pas : il faut un compte Minecraft Java Edition acheté. Vérifie l'orthographe."
+  taken-by-other: "❌ Le compte Minecraft **{name}** est déjà lié à un autre membre du Discord. Contacte le staff si c'est bien le tien."
+  lookup-failed: "❌ Impossible de vérifier ton pseudo pour l'instant (serveurs Mojang injoignables). Réessaie dans quelques minutes."
+  error: "❌ Une erreur est survenue. Réessaie ; si ça continue, préviens le staff."

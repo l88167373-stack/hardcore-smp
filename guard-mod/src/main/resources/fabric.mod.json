@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "hsmp-guard",
+  "version": "${version}",
+  "name": "HSMP Guard",
+  "description": "Mod officiel de HARDCORE SMP : prouve au serveur que tu joues avec le launcher officiel et des mods autorisés. Ne collecte rien d'autre que la liste des mods, packs de ressources et shaders du dossier du jeu.",
+  "authors": ["HARDCORE SMP"],
+  "contact": {
+    "homepage": "https://hardcore-smp.mine.fun"
+  },
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["fun.hardcoresmp.guard.GuardClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

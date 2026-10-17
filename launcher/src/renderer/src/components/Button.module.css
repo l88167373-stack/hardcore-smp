@@ -1,0 +1,108 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast) var(--ease-out),
+    border-color var(--t-fast) var(--ease-out),
+    box-shadow var(--t-med) var(--ease-out),
+    color var(--t-fast) var(--ease-out),
+    transform var(--t-fast) var(--ease-out);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.icon {
+  display: inline-flex;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sm {
+  height: 30px;
+  padding: 0 12px;
+  font-size: var(--text-sm);
+}
+
+.md {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.lg {
+  height: 46px;
+  padding: 0 22px;
+  font-size: var(--text-md);
+}
+
+.fire {
+  background: var(--fire-tilt);
+  color: var(--on-fire);
+  font-weight: 700;
+  box-shadow: 0 8px 28px -10px rgba(255, 70, 0, 0.7);
+}
+
+/* Bouton feu désactivé : braise éteinte plutôt qu'un dégradé délavé. */
+.fire:disabled {
+  opacity: 1;
+  background: #241812;
+  color: #7d6656;
+  box-shadow: inset 0 0 0 1px rgba(255, 122, 0, 0.14);
+}
+
+.fire:hover:not(:disabled) {
+  box-shadow:
+    0 0 0 1px rgba(255, 208, 0, 0.35),
+    0 10px 36px -8px rgba(255, 90, 0, 0.9);
+}
+
+.outline {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--line-strong);
+  color: var(--bone);
+}
+
+.outline:hover:not(:disabled) {
+  border-color: var(--line-ember);
+  background: var(--ember-soft);
+  box-shadow: 0 0 22px -8px rgba(255, 122, 0, 0.55);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--smoke);
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--bone);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.danger {
+  background: transparent;
+  border-color: rgba(227, 18, 27, 0.4);
+  color: var(--blood-text);
+}
+
+.danger:hover:not(:disabled) {
+  background: var(--blood-soft);
+  border-color: rgba(227, 18, 27, 0.7);
+}

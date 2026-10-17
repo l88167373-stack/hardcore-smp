@@ -1,0 +1,248 @@
+/* ---------- Fenêtre modale ---------- */
+.backdrop {
+  position: fixed;
+  inset: var(--titlebar-h) 0 0 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(6px);
+  animation: fade var(--t-med) var(--ease-out);
+}
+
+.modal {
+  width: min(520px, calc(100vw - 48px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px;
+  background: linear-gradient(180deg, #1b1b1b, #141414);
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.8),
+    0 0 90px -30px rgba(255, 70, 0, 0.6);
+  animation: rise var(--t-med) var(--ease-out);
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.modalTitle {
+  font-size: var(--text-xl);
+}
+
+.modalText {
+  color: var(--smoke);
+  max-width: 60ch;
+}
+
+.modalText strong {
+  color: var(--bone);
+}
+
+.modalProgress {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--smoke);
+}
+
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ---------- Bandeau de mise à jour ---------- */
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  border: 1px solid var(--line-ember);
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(255, 90, 0, 0.12), rgba(255, 122, 0, 0.04));
+  font-size: var(--text-sm);
+  color: #e6ddd3;
+}
+
+.bannerText {
+  flex: 1;
+}
+
+.banner strong {
+  color: var(--bone);
+}
+
+/* ---------- Notifications ---------- */
+.toasts {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  padding: 11px 12px 11px 14px;
+  border-radius: 12px;
+  background: #1c1c1c;
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.8);
+  font-size: var(--text-sm);
+  animation: rise var(--t-med) var(--ease-out);
+}
+
+.toast > span {
+  flex: 1;
+}
+
+.toast-info svg:first-child {
+  color: var(--ember);
+}
+
+.toast-success {
+  border-color: var(--line-ember);
+}
+
+.toast-success svg:first-child {
+  color: var(--fire-yellow);
+}
+
+.toast-error {
+  border-color: rgba(227, 18, 27, 0.55);
+}
+
+.toast-error svg:first-child {
+  color: var(--blood-text);
+}
+
+.toastClose {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--soot);
+  cursor: pointer;
+}
+
+.toastClose:hover {
+  color: var(--bone);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Panneau de démo (phase 1) ---------- */
+/* Placé dans la barre de titre pour ne jamais cacher le contenu. */
+.demoFab {
+  position: fixed;
+  top: 6px;
+  right: 156px;
+  z-index: 40;
+  -webkit-app-region: no-drag;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(10, 10, 10, 0.8);
+  color: var(--soot);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.demoFab:hover {
+  color: var(--bone);
+  border-color: var(--line-ember);
+}
+
+.demo {
+  position: fixed;
+  top: calc(var(--titlebar-h) + 8px);
+  right: 16px;
+  z-index: 55;
+  -webkit-app-region: no-drag;
+  width: 300px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(16, 16, 16, 0.96);
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.9);
+  font-size: var(--text-sm);
+}
+
+.demoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demoNote {
+  color: var(--soot);
+  font-size: 12px;
+  margin: 4px 0 6px;
+}
+
+.demoField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.demoField select {
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: #101010;
+  padding: 0 8px;
+  font-weight: 400;
+}
+
+.demoLink {
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ember);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

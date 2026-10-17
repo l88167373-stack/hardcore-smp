@@ -1,0 +1,292 @@
+.home {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-rows: auto auto;
+  gap: 24px 28px;
+  max-width: 1180px;
+}
+
+/* ---------- Héros ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 18px;
+  animation: reveal 900ms var(--ease-out) 150ms both;
+}
+
+.slogan {
+  margin-top: 18px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--bone);
+}
+
+.playRow {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.accountChip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 78px;
+  padding: 0 14px 0 12px;
+  border-radius: var(--radius-play);
+  border: 1px solid var(--line-strong);
+  background: rgba(20, 20, 20, 0.8);
+  color: var(--smoke);
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.accountChip:hover {
+  border-color: var(--line-ember);
+  background: rgba(30, 20, 14, 0.85);
+  color: var(--bone);
+}
+
+.accountExpired {
+  border-color: rgba(227, 18, 27, 0.55);
+}
+
+.accountExpired .accountCaption {
+  color: var(--blood-text);
+}
+
+.accountText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.accountCaption {
+  font-size: 12px;
+  color: var(--soot);
+}
+
+.accountName {
+  font-weight: 700;
+  color: var(--bone);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playHint {
+  margin-top: 14px;
+  color: var(--soot);
+  font-size: var(--text-sm);
+}
+
+.quickActions {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Fiche du serveur ---------- */
+.serverCard {
+  align-self: start;
+  margin-top: 18px;
+  animation: reveal 900ms var(--ease-out) 350ms both;
+}
+
+.players {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.playersCount {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.playersMax {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--soot);
+}
+
+.playersLabel {
+  color: var(--smoke);
+  font-size: var(--text-sm);
+  margin-top: 4px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats dt {
+  font-size: 12px;
+  color: var(--soot);
+}
+
+.stats dd {
+  margin: 2px 0 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.favicon {
+  align-self: center;
+  margin-right: 12px;
+  border-radius: 8px;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.motd {
+  white-space: pre-line;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.offline {
+  padding: 4px 0 6px;
+}
+
+.offlineTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.offlineText {
+  margin-top: 6px;
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.address {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 8px 8px 12px;
+  border-radius: 10px;
+  border: 1px dashed var(--line-strong);
+}
+
+.address code {
+  font-size: 13px;
+  color: var(--bone);
+  user-select: text;
+}
+
+.copy {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--smoke);
+  cursor: pointer;
+}
+
+.copy:hover {
+  color: var(--ember);
+  background: var(--ember-soft);
+}
+
+.checked {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--soot);
+}
+
+/* ---------- Actus ---------- */
+.news {
+  grid-column: 1 / -1;
+  animation: reveal 900ms var(--ease-out) 500ms both;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.newsItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 14px 16px;
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(10, 10, 10, 0.5);
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.newsItem:hover {
+  border-color: var(--line-ember);
+  background: rgba(255, 122, 0, 0.05);
+}
+
+.newsMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--soot);
+}
+
+.newsTitle {
+  font-size: var(--text-lg);
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.newsExcerpt {
+  color: var(--smoke);
+  font-size: var(--text-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .home {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+}

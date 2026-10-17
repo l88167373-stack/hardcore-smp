@@ -1,0 +1,14 @@
+# Fins de ligne identiques sur Windows, macOS et Linux (sinon les scripts et la CI peuvent casser).
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Fichiers binaires : jamais modifiés par Git.
+*.jar binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.icns binary
+*.zip binary

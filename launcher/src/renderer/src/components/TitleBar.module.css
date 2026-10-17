@@ -1,0 +1,80 @@
+.bar {
+  position: relative;
+  z-index: 20;
+  height: var(--titlebar-h);
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  -webkit-app-region: drag;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+/* Place pour les boutons natifs de macOS. */
+.mac {
+  padding-left: 84px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flame {
+  width: 10px;
+  height: 14px;
+  border-radius: 50% 50% 45% 45% / 62% 62% 38% 38%;
+  background: linear-gradient(0deg, #ff0000, #ff7a00 60%, #ffd000);
+  box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
+}
+
+.name {
+  font-weight: 800;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+.season {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--soot);
+}
+
+.controls {
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.control {
+  width: 46px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  color: var(--smoke);
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast),
+    color var(--t-fast);
+}
+
+.control:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--bone);
+}
+
+.close:hover {
+  background: var(--blood);
+  color: #fff;
+}
+
+.control:focus-visible {
+  outline-offset: -2px;
+}

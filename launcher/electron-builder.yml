@@ -1,0 +1,72 @@
+# Configuration d'empaquetage (installateurs Windows, macOS, Linux) et de publication sur GitHub Releases.
+# Les installateurs publiés sont construits par GitHub Actions (.github/workflows/release-launcher.yml)
+# quand un tag « vX.Y.Z » est envoyé : voir docs/INSTALL-ADMIN.md, section 9.
+appId: fun.hardcoresmp.launcher
+productName: HARDCORE SMP
+copyright: HARDCORE SMP
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**/*
+  - package.json
+asar: true
+
+# Durcissement du binaire Electron (« fuses »).
+electronFuses:
+  runAsNode: false
+  enableCookieEncryption: true
+  enableNodeOptionsEnvironmentVariable: false
+  enableNodeCliInspectArguments: false
+  enableEmbeddedAsarIntegrityValidation: true
+  onlyLoadAppFromAsar: true
+
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch: [x64]
+  # Signature du code (facultative, payante) : sans elle, Windows affiche « Windows a protégé votre ordinateur »
+  # au premier lancement (voir docs/GUIDE-JOUEUR.md). Avec un certificat, il suffit de fournir dans GitHub Actions
+  # les secrets CSC_LINK (certificat .pfx en base64) et CSC_KEY_PASSWORD : electron-builder signe tout seul.
+nsis:
+  oneClick: true
+  perMachine: false
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: HARDCORE SMP
+  artifactName: HARDCORE-SMP-Setup-${version}.${ext}
+  installerLanguages: [fr_FR]
+  language: '1036'
+
+mac:
+  icon: build/icon.icns
+  category: public.app-category.games
+  target:
+    - target: dmg
+      arch: [universal]
+  # Pas de certificat Apple (compte développeur payant) : signature « ad hoc », qui permet au moins de lancer l'app sur
+  # les Mac Apple Silicon après l'autorisation dans Réglages Système (voir docs/GUIDE-JOUEUR.md). Sans notarisation,
+  # la mise à jour automatique est impossible sur macOS : le launcher propose alors de télécharger la nouvelle version.
+  identity: '-'
+  hardenedRuntime: false
+dmg:
+  artifactName: HARDCORE-SMP-${version}-mac.${ext}
+
+linux:
+  icon: build/icons
+  category: Game
+  maintainer: HARDCORE SMP
+  target: [AppImage, deb]
+appImage:
+  artifactName: HARDCORE-SMP-${version}.${ext}
+deb:
+  artifactName: HARDCORE-SMP-${version}.${ext}
+
+# Le compte et le dépôt sont fournis par GitHub Actions (-c.publish.owner / -c.publish.repo).
+# Les 3 installateurs sont envoyés dans un brouillon, publié d'un coup quand les 3 sont prêts.
+publish:
+  provider: github
+  owner: TODO_GITHUB_OWNER
+  repo: hardcore-smp
+  releaseType: draft

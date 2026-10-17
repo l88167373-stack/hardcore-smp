@@ -1,0 +1,40 @@
+.box {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(227, 18, 27, 0.5);
+  background: var(--blood-soft);
+  color: #f1d6d3;
+  font-size: 14px;
+  max-width: 640px;
+  animation: shake 360ms var(--ease-out);
+}
+
+.title {
+  color: var(--blood-text);
+  font-weight: 700;
+  font-size: var(--text-md);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+@keyframes shake {
+  20% {
+    transform: translateX(-4px);
+  }
+  45% {
+    transform: translateX(3px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+}

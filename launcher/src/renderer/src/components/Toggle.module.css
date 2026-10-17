@@ -1,0 +1,81 @@
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.description {
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.switch {
+  position: relative;
+  flex: none;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: #262626;
+  border: 1px solid var(--line-strong);
+  transition:
+    background-color var(--t-med) var(--ease-out),
+    border-color var(--t-med) var(--ease-out),
+    box-shadow var(--t-med) var(--ease-out);
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8a847d;
+  transition:
+    transform var(--t-med) var(--ease-out),
+    background-color var(--t-med);
+}
+
+.input:checked + .switch {
+  background: var(--fire-tilt);
+  border-color: rgba(255, 208, 0, 0.4);
+  box-shadow: 0 0 16px -4px rgba(255, 100, 0, 0.8);
+}
+
+.input:checked + .switch::after {
+  transform: translateX(18px);
+  background: #1a0800;
+}
+
+.input:focus-visible + .switch {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}

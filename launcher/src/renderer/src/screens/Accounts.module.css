@@ -1,0 +1,95 @@
+.page {
+  max-width: 900px;
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: -8px 0 18px;
+  color: var(--smoke);
+  font-size: 14px;
+  max-width: 72ch;
+}
+
+.list {
+  margin-top: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: rgba(20, 20, 20, 0.85);
+}
+
+.active {
+  border-color: var(--line-ember);
+  box-shadow: var(--ember-glow);
+}
+
+.identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-lg);
+  font-weight: 750;
+}
+
+.uuid {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--soot);
+  user-select: text;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty {
+  margin-top: 20px;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  border: 1px dashed var(--line-strong);
+  color: var(--smoke);
+}
+
+.emptyTitle {
+  color: var(--bone);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  margin-bottom: 4px;
+}
+
+.modalTitle {
+  font-size: var(--text-xl);
+}
+
+.modalText {
+  color: var(--smoke);
+}
+
+.modalActions {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}

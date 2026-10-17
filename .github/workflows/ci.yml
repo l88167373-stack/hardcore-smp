@@ -1,0 +1,91 @@
+# Vérifications à chaque envoi (push) et à chaque proposition de modification (pull request) :
+# config/ valide, launcher (types, qualité, tests, compilation), plugin Paper et mod HSMP Guard (compilation + tests).
+name: Vérifications
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  config:
+    name: config/ (actus, règlement, mods autorisés)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: launcher
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: launcher/package-lock.json
+      - run: npm ci
+        env:
+          # Pas besoin d'Electron pour vérifier des fichiers JSON.
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      - name: Vérifier les 4 fichiers de config/
+        run: npx vitest run tests/config-files.test.ts
+
+  launcher:
+    name: Launcher
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: launcher
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: launcher/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npx electron-vite build
+
+  plugin:
+    name: Plugin Paper (HSMP Gatekeeper)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server-plugin
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+      - uses: gradle/actions/setup-gradle@v6
+      - run: chmod +x ./gradlew && ./gradlew build --console=plain
+      - uses: actions/upload-artifact@v7
+        with:
+          name: HSMPGatekeeper
+          path: server-plugin/build/libs/HSMPGatekeeper-*.jar
+          retention-days: 14
+
+  guard:
+    name: Mod HSMP Guard
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: guard-mod
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+      - uses: gradle/actions/setup-gradle@v6
+      # Sans le secret HSMP_GUARD_KEY : clé de test aléatoire. Ce jar sert seulement à vérifier que tout compile.
+      - run: chmod +x ./gradlew && ./gradlew build --console=plain

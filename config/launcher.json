@@ -1,0 +1,22 @@
+{
+  "minecraftVersion": "26.2",
+  "fabricLoaderVersion": "0.19.5",
+  "minLauncherVersion": "0.1.0",
+  "minGuardVersion": "1.0.0",
+  "rulesVersion": 1,
+  "server": {
+    "host": "hardcore-smp.mine.fun",
+    "port": 25565
+  },
+  "guard": {
+    "version": "1.0.0",
+    "url": "TODO_GITHUB_RELEASE_URL",
+    "sha512": "TODO_GUARD_SHA512"
+  },
+  "requiredMods": ["P7dR8mSH"],
+  "discordInvite": "TODO_DISCORD_INVITE",
+  "links": {
+    "download": "TODO_GITHUB_RELEASES_PAGE",
+    "suggestions": "TODO_DISCORD_SUGGESTIONS_CHANNEL"
+  }
+}

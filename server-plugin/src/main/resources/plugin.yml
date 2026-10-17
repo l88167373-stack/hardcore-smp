@@ -1,0 +1,11 @@
+name: HSMPGatekeeper
+version: '${version}'
+main: fun.hardcoresmp.gatekeeper.GatekeeperPlugin
+api-version: '26.2'
+description: Whitelist Discord, contrôle à la connexion et HSMP Guard pour HARDCORE SMP
+authors: [HARDCORE SMP]
+website: https://hardcore-smp.mine.fun
+permissions:
+  hsmpgatekeeper.admin:
+    description: Utiliser /gatekeeper (recharger, infos joueur, bypass)
+    default: op

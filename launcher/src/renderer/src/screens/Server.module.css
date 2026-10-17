@@ -1,0 +1,231 @@
+.page {
+  max-width: 1180px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.text {
+  color: #d6d0c8;
+}
+
+.small {
+  margin-top: 10px;
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.subTitle {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---------- Cycle mort → offrandes → retour ---------- */
+.cycle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.cycle li {
+  display: flex;
+  gap: 14px;
+}
+
+.cycle h3 {
+  font-size: var(--text-lg);
+  margin-bottom: 6px;
+}
+
+.cycle p {
+  color: var(--smoke);
+  font-size: 14px;
+}
+
+.cycle kbd {
+  color: var(--bone);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+.step {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--on-fire);
+  background: var(--fire-tilt);
+  box-shadow: 0 0 18px -4px rgba(255, 80, 0, 0.8);
+}
+
+.warning {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+/* ---------- Pourcentages ---------- */
+.odds {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 14px;
+}
+
+.odds > div:not(.oddsArrow) {
+  display: flex;
+  flex-direction: column;
+}
+
+.oddsValue {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.oddsLabel {
+  margin-top: 4px;
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.oddsArrow {
+  width: 46px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--line-strong), var(--ember));
+  position: relative;
+}
+
+.oddsArrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left-color: var(--ember);
+  border-right: 0;
+}
+
+.recipe {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recipe li {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #101010;
+  font-size: 14px;
+}
+
+.recipe li span {
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* ---------- Listes ---------- */
+.list {
+  margin: 0;
+  padding-left: 1.1em;
+  color: #d6d0c8;
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
+.list li::marker {
+  color: var(--ember);
+}
+
+.list code {
+  color: #ffc58a;
+}
+
+.commands {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.command {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  text-align: left;
+  cursor: copy;
+}
+
+.command:hover {
+  border-color: var(--line-ember);
+  background: var(--ember-soft);
+}
+
+.command code {
+  flex: none;
+  min-width: 112px;
+  color: #ffc58a;
+}
+
+.command span {
+  color: var(--smoke);
+  font-size: var(--text-sm);
+}
+
+.cardAction {
+  margin-top: 16px;
+}
+
+.rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rules li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #d6d0c8;
+}

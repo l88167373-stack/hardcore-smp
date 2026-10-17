@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin-top: 8px;
+  color: var(--smoke);
+  max-width: 64ch;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex: none;
+}

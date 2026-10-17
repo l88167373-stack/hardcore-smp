@@ -1,0 +1,64 @@
+/*
+ * Jetons de design HARDCORE SMP.
+ * Fond noir profond, cartes cendre, et un seul accent : le dégradé « feu » du logo.
+ */
+:root {
+  /* Surfaces */
+  --void: #0a0a0a;
+  --ash: #141414;
+  --ash-raised: #1a1a1a;
+  --ash-sunken: #0e0e0e;
+  --line: #242424;
+  --line-strong: #343434;
+  --line-ember: rgba(255, 122, 0, 0.28);
+
+  /* Texte */
+  --bone: #f5f2ed;
+  --smoke: #a39d95;
+  --soot: #6e6861;
+
+  /* Feu (dégradé du logo) */
+  --fire-red: #ff0000;
+  --fire-orange: #ff7a00;
+  --fire-yellow: #ffd000;
+  --fire: linear-gradient(90deg, var(--fire-red) 0%, var(--fire-orange) 55%, var(--fire-yellow) 100%);
+  --fire-tilt: linear-gradient(110deg, #ff0000 0%, #ff4a00 32%, #ff7a00 62%, #ffd000 100%);
+  --ember: #ff7a00;
+  --ember-soft: rgba(255, 122, 0, 0.12);
+  --ember-glow: 0 0 0 1px rgba(255, 122, 0, 0.18), 0 10px 40px -12px rgba(255, 90, 0, 0.45);
+  --on-fire: #140600;
+
+  /* Alerte (badges type « ÉLIMINÉ ») */
+  --blood: #e3121b;
+  --blood-text: #ff5a61;
+  --blood-soft: rgba(227, 18, 27, 0.14);
+
+  /* Formes */
+  --radius-card: 14px;
+  --radius-control: 10px;
+  --radius-play: 16px;
+  --radius-pill: 999px;
+
+  /* Typo (polices embarquées dans l'application) */
+  --font-sans: 'Geist Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Mono', monospace;
+
+  /* Échelle typographique */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 34px;
+  --text-hero: 58px;
+
+  /* Mise en page */
+  --titlebar-h: 40px;
+  --rail-w: 88px;
+  --gutter: 32px;
+
+  /* Mouvement */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 140ms;
+  --t-med: 260ms;
+}

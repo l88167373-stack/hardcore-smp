@@ -1,0 +1,81 @@
+.markdown {
+  color: #d9d4cd;
+  font-size: var(--text-md);
+  line-height: 1.65;
+  max-width: 68ch;
+  user-select: text;
+}
+
+.markdown > * + * {
+  margin-top: 0.9em;
+}
+
+.markdown h1 {
+  font-size: var(--text-2xl);
+  color: var(--bone);
+  margin-bottom: 0.5em;
+}
+
+.markdown h2 {
+  font-size: var(--text-lg);
+  color: var(--bone);
+  margin-top: 1.7em;
+  padding-top: 0.2em;
+}
+
+.markdown h3 {
+  font-size: var(--text-md);
+  color: var(--bone);
+  margin-top: 1.4em;
+}
+
+.markdown strong {
+  color: var(--bone);
+  font-weight: 700;
+}
+
+.markdown ul,
+.markdown ol {
+  padding-left: 1.3em;
+}
+
+.markdown li + li {
+  margin-top: 0.35em;
+}
+
+.markdown ul li::marker {
+  color: var(--ember);
+}
+
+.markdown ol li::marker {
+  color: var(--ember);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.markdown code {
+  background: rgba(255, 122, 0, 0.1);
+  border: 1px solid var(--line-ember);
+  color: #ffc58a;
+  border-radius: 5px;
+  padding: 0.05em 0.35em;
+}
+
+.markdown a {
+  color: var(--ember);
+  text-decoration-color: rgba(255, 122, 0, 0.45);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.markdown blockquote {
+  margin-left: 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--ember);
+  color: var(--smoke);
+}
+
+.imageAlt {
+  color: var(--soot);
+  font-style: italic;
+}

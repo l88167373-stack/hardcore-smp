@@ -1,0 +1,16 @@
+[
+  {
+    "id": "saison-2-lancement",
+    "title": "La Saison 2 est lancée",
+    "date": "2026-10-16",
+    "tag": "Saison 2",
+    "body": "Une seule vie… ou presque. La Saison 2 de **HARDCORE SMP** ouvre ses portes.\n\n## Ce qui change\n\n- **La mort n'est plus définitive** : tu es envoyé dans la zone des morts et ta tombe apparaît là où tu es tombé.\n- **Tes potes peuvent te ramener** en déposant les offrandes demandées sur ta tombe. Plus tu meurs, plus elles coûtent cher.\n- **Têtes de mobs, œufs et spawners** : chaque mob peut lâcher sa tête ou son œuf. Tape `/eggs` en jeu pour voir les chances.\n\n## À savoir\n\n- L'End est fermé au lancement.\n- Les clients de triche sont interdits.\n\nRendez-vous sur `hardcore-smp.mine.fun`. Bonne chance… tu vas en avoir besoin."
+  },
+  {
+    "id": "launcher-officiel",
+    "title": "Le launcher officiel arrive",
+    "date": "2026-10-16",
+    "tag": "Launcher",
+    "body": "Pour garder le serveur équitable, on rejoint désormais HARDCORE SMP **uniquement avec le launcher officiel**.\n\n## Pourquoi ?\n\n- Il installe tout pour toi : Java, Minecraft, Fabric et les mods autorisés.\n- Il te connecte directement au serveur, en un clic sur **JOUER**.\n- Il vérifie qu'aucun mod interdit ne s'est glissé dans ton dossier.\n\n## Comment faire\n\n1. Télécharge le launcher et installe-le.\n2. Connecte-toi avec ton compte Microsoft.\n3. Lis et accepte le règlement.\n4. Écris ton pseudo dans **#whitelist** sur le Discord.\n5. Clique sur **JOUER**.\n\nUn souci ? Va dans l'onglet **Support** du launcher et envoie tes logs au staff sur le Discord."
+  }
+]

@@ -1,0 +1,102 @@
+.rail {
+  width: var(--rail-w);
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.045);
+  background: linear-gradient(180deg, rgba(14, 14, 14, 0.7), rgba(10, 10, 10, 0.4));
+  backdrop-filter: blur(8px);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bottom {
+  margin-top: auto;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 2px 9px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--soot);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.item:hover {
+  color: var(--bone);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.active {
+  color: var(--bone);
+  background: linear-gradient(180deg, rgba(255, 122, 0, 0.13), rgba(255, 60, 0, 0.05));
+}
+
+.active svg {
+  color: var(--ember);
+  filter: drop-shadow(0 0 8px rgba(255, 122, 0, 0.6));
+}
+
+/* Repère de braise sur le bord gauche de l'élément actif. */
+.active::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, var(--fire-yellow), var(--fire-orange), var(--fire-red));
+  box-shadow: 0 0 12px rgba(255, 100, 0, 0.9);
+}
+
+.account {
+  margin-top: 6px;
+  padding-top: 12px;
+}
+
+.accountName {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Point rouge : la session du compte actif a expiré. */
+.alertDot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blood);
+  border: 2px solid var(--void);
+  box-shadow: 0 0 8px rgba(227, 18, 27, 0.8);
+}

@@ -1,0 +1,89 @@
+# Publication d'une version du launcher : envoie un tag « vX.Y.Z » (ex. v0.2.0) sur GitHub.
+#  1. un brouillon de release est créé ;
+#  2. les installateurs Windows (.exe), macOS (.dmg) et Linux (.AppImage, .deb) sont construits en parallèle et y sont ajoutés ;
+#  3. quand les 3 sont prêts, la release est publiée : les launchers installés la trouvent tout seuls.
+# Guide pas à pas : docs/INSTALL-ADMIN.md, section 9.
+name: Release du launcher
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-launcher-${{ github.ref }}
+
+jobs:
+  draft:
+    name: Brouillon de release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Vérifier le tag
+        run: |
+          if ! [[ "$GITHUB_REF_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Le tag doit être au format vX.Y.Z (ex. v0.2.0), reçu : $GITHUB_REF_NAME"
+            exit 1
+          fi
+      - name: Créer le brouillon
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release create "$GITHUB_REF_NAME" --draft --title "Launcher HARDCORE SMP ${GITHUB_REF_NAME#v}" \
+              --notes "Nouvelle version du launcher HARDCORE SMP. Les launchers déjà installés se mettent à jour tout seuls (sur Mac : télécharge le fichier .dmg)."
+          fi
+
+  build:
+    name: Installateur ${{ matrix.name }}
+    needs: draft
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, name: Windows, target: --win }
+          - { os: macos-latest, name: macOS, target: --mac }
+          - { os: ubuntu-latest, name: Linux, target: --linux }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: launcher
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: launcher/package-lock.json
+      - run: npm ci
+      - name: Numéro de version (depuis le tag)
+        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+      - name: Adresse du dépôt (mises à jour et config en ligne)
+        run: node scripts/fill-app-config.mjs "$GITHUB_REPOSITORY" "${{ github.event.repository.default_branch }}"
+      # Les tests sont déjà lancés à chaque envoi (ci.yml) ; « build » vérifie aussi les types.
+      - run: npm run build
+      - run: npm run icons
+      - name: Construire et ajouter à la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # Signature du code Windows (facultative) : ajoute ces secrets si tu achètes un certificat.
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        run: |
+          [ -n "$CSC_LINK" ] || unset CSC_LINK CSC_KEY_PASSWORD
+          npx electron-builder ${{ matrix.target }} --publish always \
+            -c.publish.owner="$GITHUB_REPOSITORY_OWNER" -c.publish.repo="${GITHUB_REPOSITORY#*/}"
+
+  publish:
+    name: Publier la release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Publier (devient la « dernière version » vue par les launchers)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "$GITHUB_REF_NAME" --draft=false --latest

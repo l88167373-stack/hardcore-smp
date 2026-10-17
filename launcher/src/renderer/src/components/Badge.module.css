@@ -1,0 +1,58 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.alert {
+  color: var(--blood-text);
+  background: var(--blood-soft);
+  border-color: rgba(227, 18, 27, 0.55);
+  box-shadow: 0 0 14px -4px rgba(227, 18, 27, 0.6);
+}
+
+.ember {
+  color: #ffb35c;
+  background: var(--ember-soft);
+  border-color: var(--line-ember);
+}
+
+.neutral {
+  color: var(--smoke);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--line-strong);
+}
+
+/* « EN LIGNE » : point qui respire. */
+.live {
+  color: #ffd27a;
+  background: rgba(255, 160, 0, 0.1);
+  border-color: rgba(255, 160, 0, 0.35);
+}
+
+.live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fire-yellow);
+  box-shadow: 0 0 8px 1px var(--fire-orange);
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  50% {
+    opacity: 0.35;
+  }
+}

@@ -1,0 +1,75 @@
+# Publication d'une version du mod HSMP Guard : envoie un tag « guard-vX.Y.Z » (ex. guard-v1.1.0).
+# Le mod est compilé avec la clé secrète HSMP_GUARD_KEY (Settings → Secrets and variables → Actions),
+# obscurci, puis publié. Le résumé de l'exécution donne le bloc à coller dans config/launcher.json.
+# Guide pas à pas : docs/INSTALL-ADMIN.md, sections 4.5 et 9.3.
+name: Release du HSMP Guard
+
+on:
+  push:
+    tags: ['guard-v*']
+
+permissions:
+  contents: write
+
+jobs:
+  guard:
+    name: HSMP Guard
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: guard-mod
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Vérifier le tag et la clé
+        env:
+          HSMP_GUARD_KEY: ${{ secrets.HSMP_GUARD_KEY }}
+        run: |
+          version="$(sed -n 's/^version = "\(.*\)"$/\1/p' build.gradle.kts)"
+          if [ "guard-v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Le tag $GITHUB_REF_NAME ne correspond pas à la version du Guard ($version) dans guard-mod/build.gradle.kts"
+            exit 1
+          fi
+          if [ -z "$HSMP_GUARD_KEY" ]; then
+            echo "::error::Le secret HSMP_GUARD_KEY est absent : voir docs/INSTALL-ADMIN.md, section 4.2"
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Compiler (avec la clé secrète) et obscurcir
+        env:
+          HSMP_GUARD_KEY: ${{ secrets.HSMP_GUARD_KEY }}
+        run: chmod +x ./gradlew && ./gradlew build --console=plain
+
+      - name: Publier
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          jar="build/libs/hsmp-guard-$VERSION-protege.jar"
+          name="hsmp-guard-$VERSION.jar"
+          cp "$jar" "build/$name"
+          sha512="$(sha512sum "build/$name" | cut -d' ' -f1)"
+          # --latest=false : la « dernière version » du dépôt doit rester celle du launcher (mises à jour automatiques).
+          gh release create "$GITHUB_REF_NAME" "build/$name" --latest=false --title "HSMP Guard $VERSION" \
+            --notes "Mod HSMP Guard $VERSION, installé automatiquement par le launcher. SHA-512 : $sha512"
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/$name"
+          {
+            echo "## HSMP Guard $VERSION publié"
+            echo
+            echo "Dans **config/launcher.json**, remplace le bloc \`guard\` par :"
+            echo
+            echo '```json'
+            echo "\"guard\": {"
+            echo "  \"version\": \"$VERSION\","
+            echo "  \"url\": \"$url\","
+            echo "  \"sha512\": \"$sha512\""
+            echo "},"
+            echo '```'
+            echo
+            echo "N'oublie pas : la clé de cette version doit être dans \`guard.keys\` du config.yml du plugin (guide admin, 4.5)."
+          } >> "$GITHUB_STEP_SUMMARY"
