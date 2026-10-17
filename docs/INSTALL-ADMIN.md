@@ -394,7 +394,8 @@ Sans Internet, chacun garde la dernière copie téléchargée.
 
 ### 6.1 Donner l'adresse au launcher
 
-Dans `launcher/app-config.json`, remplace `TODO_PUBLIC_CONFIG_URL` par la même adresse que dans le plugin (4.4) :
+**Déjà fait** pour ton dépôt : `https://raw.githubusercontent.com/l88167373-stack/hardcore-smp/premiere-publication/config/` (dans `launcher/app-config.json` et dans le `config.yml` fourni avec le plugin).
+Si tu changes un jour de dépôt ou de branche principale, mets la nouvelle adresse aux deux endroits. Dans `launcher/app-config.json` :
 
 ```json
 "publicConfigUrl": "https://raw.githubusercontent.com/<ton-compte>/<ton-dépôt>/main/config/"
@@ -478,8 +479,9 @@ en arrière-plan et les installe au prochain redémarrage (bandeau « La version
 
 ### 8.1 Indiquer le dépôt GitHub
 
-- `launcher/app-config.json` : remplace `TODO_GITHUB_REPOSITORY` par `ton-compte/ton-dépôt` (ex. `hardcoresmp/hardcore-smp`).
-- `launcher/electron-builder.yml`, section `publish` : remplace `TODO_GITHUB_OWNER` par `ton-compte` (et `repo` si besoin).
+**Déjà fait** pour ton dépôt `l88167373-stack/hardcore-smp` :
+- `launcher/app-config.json` : `updateRepository` = `l88167373-stack/hardcore-smp` ;
+- `launcher/electron-builder.yml`, section `publish` : `owner` = `l88167373-stack`.
 
 Tant que ce n'est pas fait, les mises à jour automatiques sont désactivées (le launcher fonctionne normalement).
 
@@ -525,7 +527,7 @@ Dans `config/launcher.json` :
 | Clé | Valeur |
 |---|---|
 | `discordInvite` | ton invitation Discord permanente (`https://discord.gg/...`) |
-| `links.download` | `https://github.com/<ton-compte>/hardcore-smp/releases/latest` |
+| `links.download` | `https://github.com/l88167373-stack/hardcore-smp/releases/latest` (déjà rempli) |
 | `links.suggestions` | le lien du salon `#suggestions-mods` (clic droit sur le salon → **Copier le lien**) |
 
 `publicConfigUrl` et `updateRepository` (dans `launcher/app-config.json`) sont remplis **automatiquement** par GitHub

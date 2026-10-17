@@ -67,6 +67,6 @@ deb:
 # Les 3 installateurs sont envoyés dans un brouillon, publié d'un coup quand les 3 sont prêts.
 publish:
   provider: github
-  owner: TODO_GITHUB_OWNER
+  owner: l88167373-stack
   repo: hardcore-smp
   releaseType: draft

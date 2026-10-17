@@ -14,7 +14,7 @@ Il installe tout tout seul (Java, Minecraft 26.2, Fabric, les mods autorisés) e
 
 ## 2. Télécharger et installer
 
-Télécharge le launcher ici : **TODO_LIEN_TELECHARGEMENT** (page « Releases » du GitHub officiel).
+Télécharge le launcher ici : **https://github.com/l88167373-stack/hardcore-smp/releases/latest** (page « Releases » du GitHub officiel).
 Ne le prends **jamais** ailleurs : un faux launcher pourrait voler ton compte.
 
 ### Windows
@@ -101,7 +101,7 @@ Tu bloques encore ? Demande de l'aide sur le Discord, le staff répond vite.
 > 📊 affiche le statut du serveur et les actus en direct
 >
 > **Pour jouer :**
-> 1️⃣ Télécharge le launcher : TODO_LIEN_TELECHARGEMENT
+> 1️⃣ Télécharge le launcher : https://github.com/l88167373-stack/hardcore-smp/releases/latest
 > 2️⃣ Connecte ton compte Microsoft (Minecraft Java acheté)
 > 3️⃣ Accepte le règlement
 > 4️⃣ Écris ton pseudo Minecraft dans #whitelist

@@ -1,6 +1,7 @@
 # HARDCORE SMP — Saison 2
 
 Projet officiel du serveur Minecraft **HARDCORE SMP** (`hardcore-smp.mine.fun`, Minecraft Java 26.2, Paper).
+Dépôt : https://github.com/l88167373-stack/hardcore-smp · Téléchargement du launcher : https://github.com/l88167373-stack/hardcore-smp/releases/latest
 On ne rejoint le serveur qu'avec le launcher officiel, connecté à un compte Microsoft, whitelisté via le Discord,
 règlement accepté et sans mod interdit.
 
@@ -35,7 +36,7 @@ règlement accepté et sans mod interdit.
 
 ## Encore à fournir par le propriétaire
 
-Client ID Azure · token et identifiants du bot Discord · lien d'invitation Discord · compte et dépôt GitHub ·
+Client ID Azure · token et identifiants du bot Discord · lien d'invitation Discord ·
 Application ID Discord (Rich Presence) · logo et icône · validation de la liste des mods autorisés et du règlement.
 
 Aucun secret n'est stocké dans ce dépôt : le token du bot Discord et la clé du Guard restent hors du code

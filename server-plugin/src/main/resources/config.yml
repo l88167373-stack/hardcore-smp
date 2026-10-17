@@ -83,7 +83,7 @@ public-config:
   # Adresse du dossier config/ en ligne, se terminant par « / ».
   # Exemple : https://raw.githubusercontent.com/<ton-compte>/hardcore-smp/main/config/
   # Tant qu'elle n'est pas renseignée (ou si GitHub est injoignable), la dernière copie connue est utilisée.
-  url: "TODO_PUBLIC_CONFIG_URL"
+  url: "https://raw.githubusercontent.com/l88167373-stack/hardcore-smp/premiere-publication/config/"
   # Relecture automatique toutes les X minutes (une actu, un nouveau mod autorisé… sans redémarrer).
   refresh-minutes: 10
 

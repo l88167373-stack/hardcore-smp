@@ -1,6 +1,6 @@
 {
   "azureClientId": "TODO_AZURE_CLIENT_ID",
-  "publicConfigUrl": "TODO_PUBLIC_CONFIG_URL",
+  "publicConfigUrl": "https://raw.githubusercontent.com/l88167373-stack/hardcore-smp/premiere-publication/config/",
   "discordApplicationId": "TODO_DISCORD_APPLICATION_ID",
-  "updateRepository": "TODO_GITHUB_REPOSITORY"
+  "updateRepository": "l88167373-stack/hardcore-smp"
 }
